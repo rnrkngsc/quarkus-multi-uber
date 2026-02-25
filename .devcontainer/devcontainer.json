@@ -1,0 +1,21 @@
+{
+  "name": "quarkus-multi-uber",
+  "image": "maven:3-amazoncorretto-25",
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      }
+    }
+  },
+  "remoteUser": "root",
+  "mounts": [
+    // Windows host
+    "source=${localEnv:USERPROFILE}\\\\.m2,target=/root/.m2,type=bind"
+    // Linux/macOS host
+//    "source=${localEnv:HOME}/.m2,target=/root/.m2,type=bind"
+  ],
+  "postCreateCommand": "mvn -q -version"
+}
